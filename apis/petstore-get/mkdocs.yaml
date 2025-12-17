@@ -1,0 +1,5 @@
+site_name: Petstore GET API Docs
+nav:
+  - Home: index.md
+plugins:
+  - techdocs-core
