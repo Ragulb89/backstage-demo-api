@@ -9,4 +9,4 @@ spec:
   lifecycle: production
   owner: api-platform
   definition:
-    $text: ./openapi.yaml
+    $openapi: https://petstore3.swagger.io/api/v3/openapi.json
