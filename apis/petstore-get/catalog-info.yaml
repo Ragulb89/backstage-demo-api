@@ -9,4 +9,4 @@ spec:
   lifecycle: production
   owner: guests
   definition:
-    $openapi: https://raw.githubusercontent.com/Ragulb89/backstage-demo-api/main/apis/petstore-get/openapi.yaml
+    $text: ./openapi.yaml
