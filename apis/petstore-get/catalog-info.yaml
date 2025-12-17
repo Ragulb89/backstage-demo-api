@@ -9,4 +9,4 @@ spec:
   lifecycle: production
   owner: api-platform
   definition:
-    $text: https://raw.githubusercontent.com/Ragulb89/backstage-demo-api/main/apis/petstore-get/openapi.yaml
+    $openapi:: https://raw.githubusercontent.com/Ragulb89/backstage-demo-api/main/apis/petstore-get/openapi.yaml
