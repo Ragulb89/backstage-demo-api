@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: petstore-get-api
+  description: Demo GET-only API docs (Petstore)
+  tags: [demo, external, get]
+spec:
+  type: openapi
+  lifecycle: production
+  owner: api-platform
+  definition:
+    $text: ./openapi.yaml
