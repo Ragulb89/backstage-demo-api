@@ -4,9 +4,11 @@ metadata:
   name: petstore-get-api
   description: Demo GET-only API docs (Petstore)
   tags: [demo, external, get]
+  annotations:
+    backstage.io/techdocs-ref: dir:.
 spec:
   type: openapi
   lifecycle: production
-  owner: guests
+  owner: api-platform
   definition:
     $text: ./openapi.yaml
