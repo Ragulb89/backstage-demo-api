@@ -5,7 +5,8 @@ metadata:
   description: Demo GET-only API docs (Petstore)
   tags: [demo, external, get]
   annotations:
-    backstage.io/techdocs-ref: dir:.
+    backstage.io/techdocs-ref: url:https://ragulb89.github.io/backstage-demo-api/petstore-get/
+
 spec:
   type: openapi
   lifecycle: production
