@@ -2,6 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: orders-api
+  title: Orders REST API
 spec:
   type: openapi
   lifecycle: experimental
@@ -11,13 +12,106 @@ spec:
     info:
       title: Orders API
       version: 1.0.0
+      description: Demo API showing GET query params + POST body + path params
     paths:
       /orders:
         get:
+          summary: List orders
+          parameters:
+            - name: status
+              in: query
+              required: false
+              schema:
+                type: string
+                enum: [CREATED, SHIPPED, CANCELLED]
+              description: Filter by order status
+            - name: limit
+              in: query
+              required: false
+              schema:
+                type: integer
+                minimum: 1
+                maximum: 100
+                default: 20
+              description: Max number of results
           responses:
             '200':
               description: OK
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Order'
+
         post:
+          summary: Create order
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/NewOrder'
+                examples:
+                  example1:
+                    value:
+                      product: Laptop
+                      quantity: 1
           responses:
             '201':
               description: Created
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Order'
+
+      /orders/{orderId}:
+        get:
+          summary: Get order by ID
+          parameters:
+            - name: orderId
+              in: path
+              required: true
+              schema:
+                type: string
+              description: Order identifier
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Order'
+            '404':
+              description: Not Found
+
+    components:
+      schemas:
+        Order:
+          type: object
+          required: [id, product, quantity, status]
+          properties:
+            id:
+              type: string
+              example: ORD-1001
+            product:
+              type: string
+              example: Laptop
+            quantity:
+              type: integer
+              example: 1
+            status:
+              type: string
+              example: CREATED
+
+        NewOrder:
+          type: object
+          required: [product, quantity]
+          properties:
+            product:
+              type: string
+              example: Laptop
+            quantity:
+              type: integer
+              minimum: 1
+              example: 1
