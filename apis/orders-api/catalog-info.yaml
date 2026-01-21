@@ -1,0 +1,23 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: orders-api
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: team-a
+  definition: |
+    openapi: 3.0.3
+    info:
+      title: Orders API
+      version: 1.0.0
+    paths:
+      /orders:
+        get:
+          responses:
+            '200':
+              description: OK
+        post:
+          responses:
+            '201':
+              description: Created
